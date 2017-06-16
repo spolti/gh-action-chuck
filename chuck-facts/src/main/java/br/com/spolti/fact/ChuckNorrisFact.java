@@ -53,5 +53,4 @@ public class ChuckNorrisFact {
         }
         return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(new SpeechCustomResponse(response.readEntity(Fact.class).getValue()));
     }
-
 }

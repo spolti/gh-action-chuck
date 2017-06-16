@@ -38,11 +38,15 @@ public class Main {
 
     public static void main(final String[] args) throws UnsupportedEncodingException {
         Undertow server = Undertow.builder()
-                .addHttpListener(9958, "0.0.0.0")
+                .addHttpListener(port(), "0.0.0.0")
                 .setHandler(Handlers.pathTemplate(false)
                         .add("/chuck-norris-fact", new ChuckNorrisFactHandler())
                 )
                 .build();
         server.start();
+    }
+
+    private static int port() {
+        return null != System.getenv("PORT") ? Integer.parseInt(System.getenv("PORT")) : 5000;
     }
 }
