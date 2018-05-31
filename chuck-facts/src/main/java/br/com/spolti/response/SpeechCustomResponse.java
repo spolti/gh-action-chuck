@@ -32,6 +32,7 @@ public class SpeechCustomResponse {
     private String data;
     private String[] contextOut;
     private String source;
+    private FollowUpEvent followupEvent;
 
     public SpeechCustomResponse(String speech) {
         this.speech = speech;
@@ -67,6 +68,14 @@ public class SpeechCustomResponse {
 
     public void setContextOut(String[] contextOut) {
         this.contextOut = contextOut;
+    }
+
+    public FollowUpEvent getFollowupEvent() {
+        return followupEvent;
+    }
+
+    public void setFollowupEvent(FollowUpEvent followupEvent) {
+        this.followupEvent = followupEvent;
     }
 
     public String getSource() {
