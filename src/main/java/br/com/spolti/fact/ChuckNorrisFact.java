@@ -40,7 +40,6 @@ import java.util.HashMap;
 public class ChuckNorrisFact {
 
     private static final String CHUCK_NORRIS_FACTS_ENDPOINT = "https://api.chucknorris.io/jokes/random";
-    private static final String CHUCK_NORRIS_FOLLOW_UP_EVENT = System.getProperty("br.com.spolti.follow.up.event", "tell-me-a-new-joke");
     private static SpeechCustomResponse speechCustomResponse;
 
     /**
@@ -57,9 +56,6 @@ public class ChuckNorrisFact {
             throw new RuntimeException("Failed to connect in the endpoint " + CHUCK_NORRIS_FACTS_ENDPOINT + ", status code is: " + response.getStatus());
         }
 
-        speechCustomResponse = new SpeechCustomResponse(response.readEntity(Fact.class).getValue());
-        speechCustomResponse.setFollowupEvent(new FollowUpEvent(CHUCK_NORRIS_FOLLOW_UP_EVENT));
-
-        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(speechCustomResponse);
+        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(new SpeechCustomResponse(response.readEntity(Fact.class).getValue()));
     }
 }
