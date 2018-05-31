@@ -22,7 +22,9 @@
 
 package br.com.spolti.fact;
 
+import br.com.spolti.response.FollowUpEvent;
 import br.com.spolti.response.SpeechCustomResponse;
+import com.sun.org.apache.xpath.internal.axes.HasPositionalPredChecker;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import javax.ws.rs.client.Client;
@@ -30,6 +32,7 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * Created by fspolti on 6/8/17.
@@ -37,6 +40,8 @@ import java.io.IOException;
 public class ChuckNorrisFact {
 
     private static final String CHUCK_NORRIS_FACTS_ENDPOINT = "https://api.chucknorris.io/jokes/random";
+    private static final String CHUCK_NORRIS_FOLLOW_UP_EVENT = System.getProperty("br.com.spolti.follow.up.event", "tell-me-a-new-joke");
+    private static SpeechCustomResponse speechCustomResponse;
 
     /**
      * Execute the request
@@ -51,6 +56,10 @@ public class ChuckNorrisFact {
         if (response.getStatus() != 200) {
             throw new RuntimeException("Failed to connect in the endpoint " + CHUCK_NORRIS_FACTS_ENDPOINT + ", status code is: " + response.getStatus());
         }
-        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(new SpeechCustomResponse(response.readEntity(Fact.class).getValue()));
+
+        speechCustomResponse = new SpeechCustomResponse(response.readEntity(Fact.class).getValue());
+        speechCustomResponse.setFollowupEvent(new FollowUpEvent(CHUCK_NORRIS_FOLLOW_UP_EVENT));
+
+        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(speechCustomResponse);
     }
 }
