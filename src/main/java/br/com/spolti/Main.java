@@ -22,12 +22,10 @@
 
 package br.com.spolti;
 
-import br.com.spolti.handler.ChuckNorrisFactHandler;
+import br.com.spolti.chuck.handler.ChuckNorrisDumpFileHandler;
+import br.com.spolti.chuck.handler.ChuckNorrisFactHandler;
 import io.undertow.Handlers;
 import io.undertow.Undertow;
-import org.jboss.resteasy.plugins.providers.RegisterBuiltin;
-import org.jboss.resteasy.plugins.providers.jackson.ResteasyJacksonProvider;
-import org.jboss.resteasy.spi.ResteasyProviderFactory;
 
 import java.io.UnsupportedEncodingException;
 
@@ -41,6 +39,7 @@ public class Main {
                 .addHttpListener(port(), "0.0.0.0")
                 .setHandler(Handlers.pathTemplate(false)
                         .add("/chuck-norris-fact", new ChuckNorrisFactHandler())
+                        .add("/dump", new ChuckNorrisDumpFileHandler())
                 )
                 .build();
         server.start();

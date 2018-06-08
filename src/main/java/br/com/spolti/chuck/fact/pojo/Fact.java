@@ -20,7 +20,7 @@
  SOFTWARE.
  */
 
-package br.com.spolti.fact;
+package br.com.spolti.chuck.fact.pojo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -88,5 +88,16 @@ public class Fact {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return "Fact{" +
+                "category=" + category +
+                ", iconUrl='" + iconUrl + '\'' +
+                ", id='" + id + '\'' +
+                ", url='" + url + '\'' +
+                ", value='" + value + '\'' +
+                '}';
     }
 }

@@ -20,10 +20,10 @@
  SOFTWARE.
  */
 
-package br.com.spolti.handler;
+package br.com.spolti.chuck.handler;
 
-import br.com.spolti.exception.UnsupportedHttpMethod;
-import br.com.spolti.fact.ChuckNorrisFact;
+import br.com.spolti.chuck.exception.UnsupportedHttpMethod;
+import br.com.spolti.chuck.fact.ChuckNorrisFact;
 import io.undertow.attribute.ExchangeAttributes;
 import io.undertow.predicate.Predicate;
 import io.undertow.predicate.Predicates;

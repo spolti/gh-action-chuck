@@ -20,7 +20,9 @@
  SOFTWARE.
  */
 
-package br.com.spolti.response;
+package br.com.spolti.chuck.fact.pojo;
+
+import br.com.spolti.chuck.fact.helper.AgentHelper;
 
 /**
  * Created by fspolti on 6/8/17.
@@ -33,9 +35,11 @@ public class SpeechCustomResponse {
     private String[] contextOut;
     private String source;
     private FollowUpEvent followupEvent;
+    private String fullResponse = AgentHelper.getRandomBeforeMessage() + " %s " + AgentHelper.getRandomAFterMessage();
 
     public SpeechCustomResponse(String speech) {
-        this.speech = speech;
+
+        this.speech = String.format(fullResponse, !speech.endsWith(".") ? speech + ". " : speech + "");
     }
 
     public String getSpeech() {

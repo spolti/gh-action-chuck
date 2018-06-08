@@ -20,7 +20,7 @@
  SOFTWARE.
  */
 
-package br.com.spolti.exception;
+package br.com.spolti.chuck.exception;
 
 /**
  * Created by fspolti on 6/8/17.

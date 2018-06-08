@@ -1,7 +1,6 @@
-package br.com.spolti.response;
+package br.com.spolti.chuck.fact.pojo;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class FollowUpEvent {
 
