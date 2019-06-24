@@ -26,36 +26,51 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-/**
- * Created by fspolti on 6/8/17.
- */
+import java.util.Arrays;
+import java.util.List;
+
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "category",
+        "categories",
+        "created_at",
         "icon_url",
         "id",
+        "updated_at",
         "url",
         "value"
 })
 public class Fact {
 
-    @JsonProperty("category")
-    private Object category;
+    @JsonProperty("categories")
+    private List<Object> categories;
+    @JsonProperty("created_at")
+    private String createdAt;
     @JsonProperty("icon_url")
     private String iconUrl;
     @JsonProperty("id")
     private String id;
+    @JsonProperty("updated_at")
+    private String updatedAt;
     @JsonProperty("url")
     private String url;
     @JsonProperty("value")
     private String value;
 
-    public Object getCategory() {
-        return category;
+    public List<Object> getCategories() {
+        return categories;
     }
 
-    public void setCategory(Object category) {
-        this.category = category;
+    public void setCategories(List<Object> categories) {
+        this.categories = categories;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getIconUrl() {
@@ -72,6 +87,14 @@ public class Fact {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public String getUrl() {
@@ -93,7 +116,7 @@ public class Fact {
     @Override
     public String toString() {
         return "Fact{" +
-                "category=" + category +
+                "category=" + Arrays.asList(categories) +
                 ", iconUrl='" + iconUrl + '\'' +
                 ", id='" + id + '\'' +
                 ", url='" + url + '\'' +
