@@ -1,16 +1,30 @@
-# API.AI webhook chuck norris fun fact for integration with Google Home.
-
-It just returns a simple JSON payload respecting the API.AI requisites.
+# Webhook for chuck norris fun fact for integration with Google Actions.
 
 
 A response example:
-```java
+```json
 {
-  "speech" : "The Dynamic Duo was originally called Chuck Norris and Batman. When Chuck Norris got bored and retired, Batman got promoted and added Robin to the team.",
-  "displayText" : "The Dynamic Duo was originally called Chuck Norris and Batman. When Chuck Norris got bored and retired, Batman got promoted and added Robin to the team.",
-  "data" : null,
-  "contextOut" : null,
-  "source" : "apiai-chuck-norris-fact-sample"
+    "prompt": {
+        "firstSimple": {
+            "speech": "Alright, listen to this one. Chuck Norris ain't no diamond in the rough. He's just fucking rough.  Do you want to hear another joke?",
+            "text": "Alright, listen to this one. Chuck Norris ain't no diamond in the rough. He's just fucking rough.  Do you want to hear another joke?"
+        }
+    },
+    "scene": {
+        "name": "SceneName",
+        "next": {
+            "name": "next.intent"
+        },
+        "slotFillingStatus": "UNSPECIFIED",
+        "slots": {}
+    },
+    "session": {
+        "id": "example_session_id",
+        "params": {
+            "additionalProperties": {}
+        },
+        "typeOverrides": []
+    }
 }
 ```
 
@@ -18,9 +32,11 @@ A response example:
 
 
 ```sh
-$ mvn clean package exec:exec
+$ mvn clean compile quarkus:dev
 ```
-Or build it with `mvn package`and just execute it:
+
+And to perform a example request:
 ```sh
-java -jar target/chuck-norris-fact.jar
+ curl -X POST -H 'Content-Type:application/json' -d @request-example.json http://localhost:8080/fact 
 ```
+

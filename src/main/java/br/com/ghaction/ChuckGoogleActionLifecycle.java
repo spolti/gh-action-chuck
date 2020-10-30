@@ -20,13 +20,27 @@
  SOFTWARE.
  */
 
-package br.com.spolti.chuck.exception;
+package br.com.ghaction;
 
-/**
- * Created by fspolti on 6/8/17.
- */
-public class UnsupportedHttpMethod extends Exception {
-    public UnsupportedHttpMethod(String message) {
-        super(message);
+import io.quarkus.runtime.ShutdownEvent;
+import io.quarkus.runtime.StartupEvent;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Observes;
+import java.lang.invoke.MethodHandles;
+import java.util.logging.Logger;
+
+@ApplicationScoped
+public class ChuckGoogleActionLifecycle {
+
+    private final Logger log = Logger.getLogger(MethodHandles.lookup().lookupClass().getName());
+
+    void onStart(@Observes StartupEvent ev) {
+        log.info("Chuck Norris for Google Actions is starting...");
+    }
+
+    void onStop(@Observes ShutdownEvent ev) {
+        log.info("Chuck Norris for Google Actions is stopping...");
     }
 }
+

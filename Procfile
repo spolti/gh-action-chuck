@@ -1,1 +1,1 @@
-web: java -jar target/chuck-norris-fact.jar
+web: java -jar target/chuck-norris-fact-1.0.Final-runner.jar

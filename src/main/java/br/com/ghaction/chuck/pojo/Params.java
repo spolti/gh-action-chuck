@@ -20,32 +20,30 @@
  SOFTWARE.
  */
 
-package br.com.spolti;
+package br.com.ghaction.chuck.pojo;
 
-import br.com.spolti.chuck.handler.ChuckNorrisDumpFileHandler;
-import br.com.spolti.chuck.handler.ChuckNorrisFactHandler;
-import io.undertow.Handlers;
-import io.undertow.Undertow;
+import java.util.HashMap;
+import java.util.Map;
 
-import java.io.UnsupportedEncodingException;
+public class Params {
 
-/**
- * Created by fspolti on 6/8/17.
- */
-public class Main {
+    private Map<String, Object> params = new HashMap<>();
 
-    public static void main(final String[] args) throws UnsupportedEncodingException {
-        Undertow server = Undertow.builder()
-                .addHttpListener(port(), "0.0.0.0")
-                .setHandler(Handlers.pathTemplate(false)
-                        .add("/chuck-norris-fact", new ChuckNorrisFactHandler())
-                        .add("/dump", new ChuckNorrisDumpFileHandler())
-                )
-                .build();
-        server.start();
+    public Params() {
     }
 
-    private static int port() {
-        return null != System.getenv("PORT") ? Integer.parseInt(System.getenv("PORT")) : 5000;
+    public Map<String, Object> getAdditionalProperties() {
+        return this.params;
+    }
+
+    public void setAdditionalProperty(String name, Object value) {
+        this.params.put(name, value);
+    }
+
+    @Override
+    public String toString() {
+        return "Params{" +
+                "params=" + params +
+                '}';
     }
 }

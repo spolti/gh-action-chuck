@@ -20,26 +20,20 @@
  SOFTWARE.
  */
 
-package br.com.spolti.chuck.fact.pojo;
+package br.com.ghaction.chuck.pojo;
 
-import br.com.spolti.chuck.fact.helper.AgentHelper;
+import br.com.ghaction.chuck.helper.AgentHelper;
 
-/**
- * Created by fspolti on 6/8/17.
- */
-public class SpeechCustomResponse {
+public class FirstSimple {
 
     private String speech;
-    private String displayText;
-    private String data;
-    private String[] contextOut;
-    private String source;
-    private FollowUpEvent followupEvent;
+    private String text;
+
     private String fullResponse = AgentHelper.getRandomBeforeMessage() + " %s " + AgentHelper.getRandomAFterMessage();
 
-    public SpeechCustomResponse(String speech) {
-
+    public FirstSimple(String speech) {
         this.speech = String.format(fullResponse, !speech.endsWith(".") ? speech + ". " : speech + "");
+        this.text = this.speech;
     }
 
     public String getSpeech() {
@@ -50,39 +44,20 @@ public class SpeechCustomResponse {
         this.speech = speech;
     }
 
-    public String getDisplayText() {
-        return speech;
+    public String getText() {
+        return text;
     }
 
-    public void setDisplayText(String displayText) {
-        this.displayText = displayText;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public String[] getContextOut() {
-        return contextOut;
-    }
-
-    public void setContextOut(String[] contextOut) {
-        this.contextOut = contextOut;
-    }
-
-    public FollowUpEvent getFollowupEvent() {
-        return followupEvent;
-    }
-
-    public void setFollowupEvent(FollowUpEvent followupEvent) {
-        this.followupEvent = followupEvent;
-    }
-
-    public String getSource() {
-        return "apiai-chuck-norris-fact-webhook";
+    @Override
+    public String toString() {
+        return "FirstSimple{" +
+                "speech='" + speech + '\'' +
+                ", text='" + text + '\'' +
+                ", fullResponse='" + fullResponse + '\'' +
+                '}';
     }
 }

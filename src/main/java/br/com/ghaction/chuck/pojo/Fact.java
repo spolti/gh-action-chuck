@@ -20,41 +20,19 @@
  SOFTWARE.
  */
 
-package br.com.spolti.chuck.fact.pojo;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import org.codehaus.jackson.annotate.JsonProperty;
+package br.com.ghaction.chuck.pojo;
 
 import java.util.Arrays;
 import java.util.List;
 
-
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "categories",
-        "created_at",
-        "icon_url",
-        "id",
-        "updated_at",
-        "url",
-        "value"
-})
 public class Fact {
 
-    @JsonProperty("categories")
     private List<Object> categories;
-    @JsonProperty("created_at")
     private String createdAt;
-    @JsonProperty("icon_url")
     private String iconUrl;
-    @JsonProperty("id")
     private String id;
-    @JsonProperty("updated_at")
     private String updatedAt;
-    @JsonProperty("url")
     private String url;
-    @JsonProperty("value")
     private String value;
 
     public List<Object> getCategories() {
