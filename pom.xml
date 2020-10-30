@@ -15,7 +15,7 @@
         <version.com.fasterxml.jackson.core>2.10.4</version.com.fasterxml.jackson.core>
         <version.io.undertow>2.0.23.Final</version.io.undertow>
         <version.org.codehaus.jackson.mapper-asl>1.9.13</version.org.codehaus.jackson.mapper-asl>
-        <version.junit>4.12</version.junit>
+        <version.junit>4.13.1</version.junit>
         <version.maven.source.plugin>3.0.1</version.maven.source.plugin>
         <version.maven.javadoc.plugin>2.10.4</version.maven.javadoc.plugin>
         <version.maven.release.plugin>2.5.3</version.maven.release.plugin>
